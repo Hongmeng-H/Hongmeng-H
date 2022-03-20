@@ -1,22 +1,18 @@
 package com.example.web;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
-
-
 import com.example.pojo.Cart;
 import com.example.pojo.User;
 import com.example.service.OrderService;
 import com.example.service.impl.OrderServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "OrderServlet", value = "/OrderServlet")
+
+@WebServlet(name = "OrderServlet",value = "/OrderServlet")
 public class OrderServlet extends BaseServlet {
 
     private OrderService orderService = new OrderServiceImpl();
@@ -40,10 +36,11 @@ public class OrderServlet extends BaseServlet {
             return;
         }
 
+        System.out.println("OrderServlet程序在[" +Thread.currentThread().getName() + "]中");
+
         Integer userId = loginUser.getId();
 //        调用orderService.createOrder(Cart,Userid);生成订单
         String orderId = orderService.createOrder(cart, userId);
-
 //        req.setAttribute("orderId", orderId);
         // 请求转发到/pages/cart/checkout.jsp
 //        req.getRequestDispatcher("/pages/cart/checkout.jsp").forward(req, resp);

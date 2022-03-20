@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "BookServlet", value = "/BookServlet")
+@WebServlet(name = "BookServlet",value = "/BookServlet")
 public class BookServlet extends BaseServlet{
 
     private BookService bookService = new BookServiceImpl();
@@ -32,7 +32,7 @@ public class BookServlet extends BaseServlet{
         //2 调用BookService.page(pageNo，pageSize)：Page对象
         Page<Book> page = bookService.page(pageNo,pageSize);
 
-        page.setUrl("/BookServlet?action=page");
+        page.setUrl("manager/bookServlet?action=page");
 
         //3 保存Page对象到Request域中
         req.setAttribute("page",page);

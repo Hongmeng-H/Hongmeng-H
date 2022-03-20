@@ -1,9 +1,5 @@
 package com.example.web;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
 import com.example.pojo.Book;
 import com.example.pojo.Page;
 import com.example.service.BookService;
@@ -11,11 +7,13 @@ import com.example.service.impl.BookServiceImpl;
 import com.example.utils.WebUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ClientBookServlet", value = "/ClientBookServlet")
+
+@WebServlet(name = "ClientBookServlet",value = "/ClientBookServlet")
 public class ClientBookServlet extends BaseServlet {
 
     private BookService bookService = new BookServiceImpl();
@@ -73,4 +71,3 @@ public class ClientBookServlet extends BaseServlet {
     }
 
 }
-

@@ -5,8 +5,6 @@ import com.example.service.UserService;
 import com.example.service.impl.UserServiceImpl;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class UserServiceTest {
 
     UserService userService = new UserServiceImpl();

@@ -13,6 +13,19 @@
 			// 页面加载完成之后
 			$(function () {
 
+				$("#username").blur(function () {
+					//1 获取用户名
+					var username = this.value;
+					$.getJSON("http://localhost:8080/book/userServlet","action=ajaxExistsUsername&username=" + username,function (data) {
+						if (data.existsUsername) {
+							$("span.errorMsg").text("用户名已存在！");
+						} else {
+							$("span.errorMsg").text("用户名可用！");
+						}
+					});
+				});
+
+
 				// 给验证码的图片，绑定单击事件
 				$("#code_img").click(function () {
 					// 在事件响应的function函数中有一个this对象。这个this对象，是当前正在响应事件的dom对象
@@ -35,7 +48,6 @@
 
 						return false;
 					}
-
 					// 验证密码：必须由字母，数字下划线组成，并且长度为5到12位
 					//1 获取用户名输入框里的内容
 					var passwordText = $("#password").val();

@@ -21,15 +21,16 @@ public abstract class BaseDao {
      * @return 如果返回-1,说明执行失败<br/>返回其他表示影响的行数
      */
     public int update(String sql, Object... args) {
+
+        System.out.println(" BaseDao 程序在[" +Thread.currentThread().getName() + "]中");
+
         Connection connection = JdbcUtils.getConnection();
         try {
             return queryRunner.update(connection, sql, args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(connection);
+            throw new RuntimeException(e);
         }
-        return -1;
     }
 
     /**
@@ -47,10 +48,8 @@ public abstract class BaseDao {
             return queryRunner.query(con, sql, new BeanHandler<T>(type), args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(con);
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     /**
@@ -68,10 +67,8 @@ public abstract class BaseDao {
             return queryRunner.query(con, sql, new BeanListHandler<T>(type), args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(con);
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     /**
@@ -86,12 +83,10 @@ public abstract class BaseDao {
 
         try {
             return queryRunner.query(conn, sql, new ScalarHandler(), args);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException(e);
         }
-        return null;
 
     }
 
