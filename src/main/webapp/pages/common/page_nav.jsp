@@ -72,7 +72,7 @@
 
                 var pageNo = $("#pn_input").val();
 
-                <%--var pageTotal = ${requestScope.page.pageTotal};--%>
+                <%--var pageTotal = ${pageScope.basePath};--%>
                 <%--alert(pageTotal);--%>
 
                 // javaScript语言中提供了一个location地址栏对象

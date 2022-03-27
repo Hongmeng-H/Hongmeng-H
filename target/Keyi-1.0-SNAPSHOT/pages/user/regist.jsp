@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>尚硅谷会员注册页面</title>
+		<title>可易会员注册页面</title>
 
 		<%-- 静态包含 base标签、css样式、jQuery文件 --%>
 		<%@ include file="/pages/common/head.jsp"%>
@@ -12,6 +12,19 @@
 		<script type="text/javascript">
 			// 页面加载完成之后
 			$(function () {
+
+				$("#username").blur(function () {
+					//1 获取用户名
+					var username = this.value;
+					$.getJSON("http://localhost:8080/Keyi_war/UserServlet","action=ajaxExistsUsername&username=" + username,function (data) {
+						if (data.existsUsername) {
+							$("span.errorMsg").text("用户名已存在！");
+						} else {
+							$("span.errorMsg").text("用户名可用！");
+						}
+					});
+				});
+
 
 				// 给验证码的图片，绑定单击事件
 				$("#code_img").click(function () {
@@ -35,7 +48,6 @@
 
 						return false;
 					}
-
 					// 验证密码：必须由字母，数字下划线组成，并且长度为5到12位
 					//1 获取用户名输入框里的内容
 					var passwordText = $("#password").val();
@@ -119,13 +131,13 @@
 					<div class="login_form">
 						<div class="login_box">
 							<div class="tit">
-								<h1>注册尚硅谷会员</h1>
+								<h1>注册成为可易用户</h1>
 								<span class="errorMsg">
 									${ requestScope.msg }
 								</span>
 							</div>
 							<div class="form">
-								<form action="userServlet" method="post">
+								<form action="RegistServlet" method="post">
 									<input type="hidden" name="action" value="regist">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"

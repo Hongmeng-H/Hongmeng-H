@@ -38,6 +38,17 @@ public class UserServlet extends BaseServlet {
         resp.getWriter().write(json);
     }
 
+
+
+
+//    protected void login_sucss(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
+//        req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
+//    }
+
+
+
+
     /**
      * 注销
      * @param req
@@ -77,7 +88,7 @@ public class UserServlet extends BaseServlet {
             // 登录 成功
             // 保存用户登录的信息到Session域中
             req.getSession().setAttribute("user", loginUser);
-            //跳到成功页面login_success.html
+            //跳到成功页面login_success.html    /pages/user/login_success.jsp
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
 
@@ -105,7 +116,7 @@ public class UserServlet extends BaseServlet {
 
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
 
-//        2、检查 验证码是否正确  === 写死,要求验证码为:abcde
+
         if (token!=null && token.equalsIgnoreCase(code)) {
 //        3、检查 用户名是否可用
             if (userService.existsUsername(username)) {

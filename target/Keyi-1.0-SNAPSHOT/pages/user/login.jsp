@@ -25,7 +25,7 @@
 					<div class="login_form">
 						<div class="login_box">
 							<div class="tit">
-								<h1>尚硅谷会员</h1>
+								<h1>可易用户</h1>
 								<a href="pages/user/regist.jsp">立即注册</a>
 							</div>
 							<div class="msg_cont">
@@ -35,7 +35,7 @@
 								</span>
 							</div>
 							<div class="form">
-								<form action="userServlet" method="post">
+								<form action="UserServlet" method="post">
 									<input type="hidden" name="action" value="login" />
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"

@@ -12,7 +12,7 @@
 </head>
 <body>
 纺织用品
-<a href="cartServlet?action=addItem">加入购物车</a>
+<a href="CartServlet?action=addItem">加入购物车</a>
 
 </body>
 </html>

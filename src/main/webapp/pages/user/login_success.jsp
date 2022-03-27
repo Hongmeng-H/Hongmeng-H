@@ -32,7 +32,7 @@
 		
 		<div id="main">
 		
-			<h1>欢迎回来 <a href="../../index.jsp">转到主页</a></h1>
+			<h1>欢迎回来 <a href="UserServlet?action=logout">返回主页</a>&nbsp;&nbsp;</h1>
 	
 		</div>
 

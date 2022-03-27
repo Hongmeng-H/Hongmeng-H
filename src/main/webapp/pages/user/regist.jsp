@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>尚硅谷会员注册页面</title>
+		<title>可易会员注册页面</title>
 
 		<%-- 静态包含 base标签、css样式、jQuery文件 --%>
 		<%@ include file="/pages/common/head.jsp"%>
@@ -16,7 +16,7 @@
 				$("#username").blur(function () {
 					//1 获取用户名
 					var username = this.value;
-					$.getJSON("http://localhost:8080/book/userServlet","action=ajaxExistsUsername&username=" + username,function (data) {
+					$.getJSON("http://localhost:8080/Keyi_war/UserServlet","action=ajaxExistsUsername&username=" + username,function (data) {
 						if (data.existsUsername) {
 							$("span.errorMsg").text("用户名已存在！");
 						} else {
@@ -131,13 +131,13 @@
 					<div class="login_form">
 						<div class="login_box">
 							<div class="tit">
-								<h1>注册尚硅谷会员</h1>
+								<h1>注册成为可易用户</h1>
 								<span class="errorMsg">
 									${ requestScope.msg }
 								</span>
 							</div>
 							<div class="form">
-								<form action="userServlet" method="post">
+								<form action="RegistServlet" method="post">
 									<input type="hidden" name="action" value="regist">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"

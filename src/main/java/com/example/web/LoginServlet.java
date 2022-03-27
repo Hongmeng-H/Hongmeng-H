@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             // 登录 成功
             //跳到成功页面login_success.html
+
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }

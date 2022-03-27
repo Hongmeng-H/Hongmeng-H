@@ -36,7 +36,7 @@ public class OrderServlet extends BaseServlet {
             return;
         }
 
-        System.out.println("OrderServlet程序在[" +Thread.currentThread().getName() + "]中");
+//        System.out.println("OrderServlet程序在[" +Thread.currentThread().getName() + "]中");
 
         Integer userId = loginUser.getId();
 //        调用orderService.createOrder(Cart,Userid);生成订单
@@ -47,6 +47,7 @@ public class OrderServlet extends BaseServlet {
 
         req.getSession().setAttribute("orderId",orderId);
 
+//        http://localhost:8080/Keyi_war_exploded/OrderServlet?action=createOrder
         resp.sendRedirect(req.getContextPath()+"/pages/cart/checkout.jsp");
     }
 

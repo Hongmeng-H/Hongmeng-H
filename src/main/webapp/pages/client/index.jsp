@@ -17,10 +17,10 @@
 				 * @type {jQuery}
 				 */
 				var bookId = $(this).attr("bookId");
-				// location.href = "http://localhost:8080/book/cartServlet?action=addItem&id=" + bookId;
+				// location.href = "http://localhost:8080/Keyi_war_exploded/CartServlet?action=addItem&id=" + bookId;
 
 				// 发ajax请求，添加商品到购物车
-				$.getJSON("http://localhost:8080/book/cartServlet","action=ajaxAddItem&id=" + bookId,function (data) {
+				$.getJSON("http://localhost:8080/Keyi_war_exploded/CartServlet","action=ajaxAddItem&id=" + bookId,function (data) {
 					$("#cartTotalCount").text("您的购物车中有 " + data.totalCount + " 件商品");
 					$("#cartLastName").text(data.lastName);
 				})
@@ -33,7 +33,7 @@
 	
 	<div id="header">
 			<img class="logo_img" alt="" src="static/img/logo.gif" >
-			<span class="wel_word">网上书城</span>
+			<span class="wel_word">商 城</span>
 			<div>
 				<%--如果用户还没有登录，显示     【登录 和注册的菜单】 --%>
 				<c:if test="${empty sessionScope.user}">
@@ -42,9 +42,9 @@
 				</c:if>
 				<%--如果已经登录，则显示 登录 成功之后的用户信息。--%>
 				<c:if test="${not empty sessionScope.user}">
-					<span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
+					<span>欢迎<span class="um_span">${sessionScope.user.username}</span>欢迎光临可易商城</span>
 					<a href="pages/order/order.jsp">我的订单</a>
-					<a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;&nbsp;
+					<a href="UserServlet?action=logout">注销</a>&nbsp;&nbsp;&nbsp;
 				</c:if>
 
 				<a href="pages/cart/cart.jsp">购物车</a>
@@ -74,7 +74,7 @@
 					<%--购物车非空的输出--%>
 					<span id="cartTotalCount">您的购物车中有 ${sessionScope.cart.totalCount} 件商品</span>
 					<div>
-						您刚刚将<span style="color: red" id="cartLastName">${sessionScope.lastName}</span>加入到了购物车中
+						您刚刚将<span style="color: red" id="cartLastName1">${sessionScope.lastName}</span>加入到了购物车中
 					</div>
 				</c:if>
 			</div>
