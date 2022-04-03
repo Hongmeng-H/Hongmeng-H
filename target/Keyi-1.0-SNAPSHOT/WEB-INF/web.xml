@@ -29,7 +29,7 @@
     <filter-mapping>
         <filter-name>ManagerFilter</filter-name>
         <url-pattern>/pages/manager/*</url-pattern>
-        <url-pattern>/manager/bookServlet</url-pattern>
+        <url-pattern>/BookServlet</url-pattern>
     </filter-mapping>
 
 

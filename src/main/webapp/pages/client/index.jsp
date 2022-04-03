@@ -55,7 +55,7 @@
 	<div id="main">
 		<div id="book">
 			<div class="book_cond">
-				<form action="client/bookServlet" method="get">
+				<form action="ClientBookServlet" method="get">
 					<input type="hidden" name="action" value="pageByPrice">
 					价格：<input id="min" type="text" name="min" value="${param.min}"> 元 -
 						<input id="max" type="text" name="max" value="${param.max}"> 元

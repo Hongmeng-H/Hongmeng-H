@@ -34,10 +34,11 @@ public class BookServlet extends BaseServlet{
 
 //        page.setUrl("manager/bookServlet?action=page");源代码
 
-        page.setUrl("manager/bookServlet?action=page");
+        page.setUrl("BookServlet?action=page");
         //3 保存Page对象到Request域中
         req.setAttribute("page",page);
         //4 请求转发到pages/manager/book_manager.jsp页面
+
         req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req,resp);
     }
 
@@ -51,10 +52,10 @@ public class BookServlet extends BaseServlet{
 //        2、调用BookService.addBook()保存图书
         bookService.addBook(book);
 //        3、跳到图书列表页面
-//                /manager/bookServlet?action=list
-//        req.getRequestDispatcher("/manager/bookServlet?action=list").forward(req, resp);
+//                BookServlet?action=list
+//        req.getRequestDispatcher("BookServlet?action=list").forward(req, resp);
 
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + pageNo);
+        resp.sendRedirect(req.getContextPath() + "/BookServlet?action=page&pageNo=" + pageNo);
 
     }
 
@@ -66,8 +67,8 @@ public class BookServlet extends BaseServlet{
 //        2、调用bookService.deleteBookById();删除图书
         bookService.deleteBookById(id);
 //        3、重定向回图书列表管理页面
-//                /book/manager/bookServlet?action=list
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
+//                /bookBookServlet?action=list
+        resp.sendRedirect(req.getContextPath() + "/BookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
     }
 
 
@@ -78,8 +79,8 @@ public class BookServlet extends BaseServlet{
 //        2、调用BookService.updateBook( book );修改图书
         bookService.updateBook(book);
 //        3、重定向回图书列表管理页面
-//        地址：/工程名/manager/bookServlet?action=list
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
+//        地址：/工程名BookServlet?action=list
+        resp.sendRedirect(req.getContextPath() + "/BookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
     }
 
 
